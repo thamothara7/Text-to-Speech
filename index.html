@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Text to Speech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <header class="app__header">
+    <h1 class="title">Text to Speech</h1>
+    <div class="header-right">
+      <button id="themeToggle" class="btn ghost small">Switch Theme</button>
+      <div class="status" id="status">Idle</div>
+    </div>
+  </header>
+
+  <section class="panel panel--input">
+    <div class="textarea-wrap">
+      <textarea id="text" placeholder="Type or paste text here..."></textarea>
+      <div class="metrics">
+        <div class="metric"><span id="charCount">0</span> chars</div>
+        <div class="metric"><span id="wordCount">0</span> words</div>
+        <div class="metric"><span id="durationEstimate">0.0s</span> est</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel--controls">
+    <div class="grid">
+      <label class="field">
+        <span class="field__label">Voice</span>
+        <select id="voice"></select>
+      </label>
+      <label class="field">
+        <span class="field__label">Rate <span id="rateVal">1.0</span></span>
+        <input id="rate" type="range" min="0.5" max="2" step="0.1" value="1" />
+      </label>
+      <label class="field">
+        <span class="field__label">Pitch <span id="pitchVal">1.0</span></span>
+        <input id="pitch" type="range" min="0" max="2" step="0.1" value="1" />
+      </label>
+      <label class="field">
+        <span class="field__label">Volume <span id="volumeVal">1.0</span></span>
+        <input id="volume" type="range" min="0" max="1" step="0.05" value="1" />
+      </label>
+    </div>
+
+    <div class="buttons">
+      <button id="speak" class="btn primary">Speak</button>
+      <button id="pause" class="btn">Pause</button>
+      <button id="resume" class="btn">Resume</button>
+      <button id="stop" class="btn danger">Stop</button>
+      <button id="clear" class="btn ghost">Clear</button>
+    </div>
+
+    <div class="progress">
+      <div class="progress__bar" id="progressBar"></div>
+    </div>
+    <div class="readout">
+      <div><strong>Spoken:</strong> <span id="spokenChars">0</span> / <span id="totalChars">0</span></div>
+      <div><strong>Time:</strong> <span id="elapsed">0.0s</span></div>
+    </div>
+  </section>
+
+  <footer class="app__footer">
+    <div>Built with the Web Speech API</div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
